@@ -1,0 +1,130 @@
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+button i {
+    font-size: 18px;
+}
+
+.box {
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0;
+    transition: .5s height;
+    max-height: 88vh;
+}
+
+.box h2 {
+    text-align: center;
+    margin: 2px 0;
+    margin-bottom: 10px;
+}
+
+.box h3 {
+    text-align: center;
+    margin: 2px 0;
+    margin-bottom: 5px;
+}
+
+.list .item {
+    width: 100%;
+}
+
+.controls {
+    width: 100%;
+    height: max-content;
+    padding: 5px 3px;
+    border: 0px solid #000;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 4px 0;
+}
+
+.controls li {
+    margin: 0 2px;
+}
+
+.controls .active {
+    border: 0px solid #000;
+    box-shadow: 0 0 3px 0;
+}
+
+.controls .counts {
+    margin: 2px 3px;
+}
+
+.add, .search {
+    padding: 5px 3px;
+    width: 100%;
+    height: max-content;
+    z-index: 0;
+    transition: .5s top;
+    /* display: none; */
+}
+.add input, .search input {
+    width: 100%;
+    height: max-content;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0;
+    padding: 8px;
+    border: 0px solid #000;
+    font-size: 18px;
+}
+
+.list {
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    box-shadow: 0 0 3px 0 inset;
+    border-radius: 10px;
+    max-height: 62vh;
+    overflow: hidden auto;
+}
+
+.list li {
+    width: 100%;
+    height: max-content;
+    border: 0.5px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px 0;
+}
+
+.list li input {
+    margin: 6px;
+}
+
+.alert {
+    width: 50%;
+    height: max-content;
+    border-radius: 10px;
+    border: 0px solid #000;
+    box-shadow: 0 0 4px 0;
+    padding: 10px;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background-color: #ccc;
+    min-width: 50%;
+}
+.alert h3 {
+    text-align: center;
+    margin: 10px;
+}
+.alert .btn {
+    color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0;
+    background-color: blue;
+}
