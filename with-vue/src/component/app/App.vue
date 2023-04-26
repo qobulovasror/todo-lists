@@ -8,6 +8,20 @@ export default {
     Header,
     ItemList,
     Filter
+  },
+  data(){
+    return{
+      items: [
+        {
+          name: "Dasturlash",
+          status: "progress"
+        },
+        {
+          name: "Ingilz tili",
+          status: "todo"
+        },
+      ]
+    }
   }
 }
 </script>
@@ -16,8 +30,8 @@ export default {
   <div class="container">
     <div class="card mt-5 p-4">
       <Header/>
-      <Filter/>
-      <ItemList/>
+      <Filter :items="items"/>
+      <ItemList :items="items"/>
     </div>
   </div>
 </template>

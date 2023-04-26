@@ -8,7 +8,7 @@
         style="width: max-content">
         Add item
     </button>
-    <AddWin/>
+    <AddWin :items="items"/>
 </template>
 
 <script>
@@ -16,6 +16,12 @@ import AddWin from './AddWin.vue';
 export default {
     components: {
         AddWin,
+    },
+    props: {
+        items:{
+            type: Array,
+            required: true,
+        }
     }
 }
 </script>
