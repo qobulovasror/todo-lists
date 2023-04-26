@@ -14,13 +14,24 @@ export default {
       items: [
         {
           name: "Dasturlash",
-          status: "progress"
+          status: "progres"
         },
         {
           name: "Ingilz tili",
           status: "todo"
         },
-      ]
+      ],
+      filter: {
+        text: "",
+        type: ""
+      }
+    }
+  },
+  methods: {
+    setFilter(text, type){
+      this.filter = {
+        text, type
+      }
     }
   }
 }
@@ -30,8 +41,8 @@ export default {
   <div class="container">
     <div class="card mt-5 p-4">
       <Header/>
-      <Filter :items="items"/>
-      <ItemList :items="items"/>
+      <Filter :items="items" :filter="filter"/>
+      <ItemList :items="items" :filter="filter"/>
     </div>
   </div>
 </template>

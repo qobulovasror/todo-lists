@@ -1,4 +1,11 @@
 <template>
+    <Edit 
+        :items="items"
+        :editActive="editActive"
+        :setEditModal="setEditModal"
+        :selectItem="selectItem"
+        :selectIndex="selectIndex"
+        />
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -15,6 +22,8 @@
                 :item="item"
                 :items="items"
                 :index="index"
+                :setSelectedItem="setSelectedItem"
+                :filter="filter"
                 />
         </tbody>
     </table>
@@ -22,15 +31,43 @@
 
 <script>
 import Item from "./Item.vue";
+import Edit from "./edit/Edit.vue";
 export default {
     props: {
         items: {
             type: Array,
             required: true
+        },
+        filter: {
+            type: Object,
+            required: true
+        }
+    },
+    data(){
+        return{
+            editActive: false,
+            selectItem: null,
+            selectIndex: -1
         }
     },
     components: {
-        Item
+        Item,
+        Edit
+    },
+    methods: {
+        setEditModal(isActive){
+            this.editActive = isActive
+            if(!isActive){
+                this.selectIndex = -1;
+                this.selectItem = null
+            }
+        },
+        setSelectedItem(item, index){
+            this.selectItem = item
+            this.selectIndex = index
+            this.setEditModal(true)
+            console.log(item);
+        },
     }
 }
 </script>
