@@ -1,8 +1,10 @@
 <div class="container">
-  <h1 class="text-center my-3">TODO list</h1>
+  <div class="card p-2 my-4">
+    <h1 class="text-center">TODO lists</h1>
+  </div>
   <div class="d-flex justify-content-between">
     <div class="card p-3 col-4">
-      <form>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
         <h2 class="text-center">Add task</h2>
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
@@ -11,6 +13,8 @@
             placeholder="Task name"
             class="form-control"
             id="name"
+            name="name"
+            [(ngModel)]="name"
             required
           />
         </div>
@@ -21,11 +25,19 @@
             placeholder="Description (optional)"
             class="form-control"
             id="desc"
+            name="desc"
+            [(ngModel)]="desc"
+            required
           />
         </div>
         <div class="mb-3">
           <label for="priority" class="form-label">Priority</label>
-          <select class="form-select" id="priority" aria-label="Default select example">
+          <select
+            class="form-select"
+            id="priority"
+            name="priority"
+            [(ngModel)]="priority"
+          >
             <option value="hight">Hight</option>
             <option value="medium" selected>Medium</option>
             <option value="low">Low</option>
@@ -33,7 +45,13 @@
         </div>
         <div class="mb-3">
           <label for="Status" class="form-label">Status</label>
-          <select class="form-select" id="Status" aria-label="Default select example">
+          <select
+            class="form-select"
+            id="Status"
+            name="status"
+            aria-label="Default select example"
+            [(ngModel)]="status"
+          >
             <option value="pending" selected>Pending</option>
             <option value="ongoing">Ongoing</option>
             <option value="complete">Complete</option>
@@ -44,18 +62,23 @@
       </form>
     </div>
 
-    <div class="px- col-7 d-flex flex-column">
-      <div class="card p-3">
+    <div
+      class="col-7 d-flex flex-column"
+      style="max-height: 600px; overflow: hidden auto"
+    >
+      <div class="card p-3 mb-3" *ngFor="let task of taks; index as i">
         <div class="d-flex justify-content-start mb-2">
-          <span class="badge fs-6 text-bg-primary me-3">Hight</span>
-          <span class="badge fs-6 text-bg-primary me-3">Complete</span>
+          <span class="badge fs-6 me-3" [class.text-bg-danger]="task.priority=='hight'" [class.text-bg-warning]="task.priority=='hight'" [class.text-bg-success]="task.priority=='hight'">{{
+            task.priority
+          }}</span>
+          <span class="badge fs-6 me-3"  [class.text-bg-danger]="task.status=='pending'" [class.text-bg-warning]="task.status=='ongoing'" [class.text-bg-success]="task.status=='complete'">{{ task.status }}</span>
         </div>
-        <h5 class="card-title fw-bold">Task title</h5>
-        <p>Task description</p>
+        <h5 class="card-title fw-bold">{{ task.name }}</h5>
+        <p>{{ task.desc }}</p>
         <div class="d-flex justify-content-end mt-2">
-          <button type="button" class="btn btn-danger me-2">Delete</button>
-          <button type="button" class="btn btn-primary me-2">Edit</button>
-          <button type="button" class="btn btn-success me-2">complete</button>
+          <button type="button" class="btn btn-danger me-2" (click)="onDeleteTask(i)">Delete</button>
+          <button type="button" class="btn btn-primary me-2" (click)="onEditTask(i)">Edit</button>
+          <button type="button" class="btn btn-success me-2" *ngIf="task.status!='complete'" (click)="onComplete(i)">complete</button>
         </div>
       </div>
     </div>
